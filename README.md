@@ -47,6 +47,6 @@ If you want to explore my project, using this command:
   - Run demo:
   
   ```
-  streamlit run app.py
+  streamlit run demo.py
   ```
 
