@@ -6,7 +6,7 @@ from sklearn.preprocessing import MinMaxScaler
 from datetime import datetime, timedelta
 
 # Load pre-trained model
-model = tf.keras.models.load_model("model_predict_stock_1.h5", compile=False)
+model = tf.keras.models.load_model("model_predict_stock.h5", compile=False)
 
 def create_demo():
     #title của web
