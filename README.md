@@ -42,3 +42,11 @@ Long Short-Term Memory (LSTM) is a specialized recurrent neural network architec
 ### **DEMO**
 [Click to try demo](https://stock-predictionn.streamlit.app/) 
 
+If you want to explore my project, using this command:
+
+  - Run demo:
+  
+  ```
+  streamlit run app.py
+  ```
+
