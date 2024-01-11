@@ -1,10 +1,12 @@
 import pandas as pd
+import numpy as np
 import tensorflow
 import streamlit as st
+from sklearn.preprocessing import MinMaxScaler
 from datetime import datetime, timedelta
 
 # Load pre-trained model
-model = tensorflow.keras.models.load_model("model_predict_stock.h5", compile=False)
+model = tensorflow.keras.models.load_model("model_predict_stock_1.h5", compile=False)
 
 def create_demo():
     #title của web
@@ -33,8 +35,8 @@ def enter_stock_symbol():
     elif stock_symbol == "PNJ" or stock_symbol == "PNJ":
         ticker = 2
 
-    #nếu mã là VIN thì set ticker = 3 tương ứng VIN khi encode
-    elif stock_symbol == "VIN" or stock_symbol == "vin":
+    #nếu mã là VIN thì set ticker = 3 tương ứng VIC khi encode
+    elif stock_symbol == "VIC" or stock_symbol == "vic":
         ticker = 3
 
     #nếu mã khác ngoài 4 mã trên, hiển thị là không có dữ liệu về mã cần dự đoán    
@@ -81,17 +83,25 @@ def enter_date():
     return wanted_day, month, date
 
 def run_predict(stock_symbol, ticker, open_price, high_price, low_price, present_price, volume, wanted_day, month, date):
+    scaler = MinMaxScaler()
+    present_price_array = np.array(present_price)
+
     #tạo input đầu vào cho model
-    data_input = {"Ticker": [ticker], "Open": [open_price], "High": [high_price], "Low": [low_price], "Volume": [volume]}
+    data_input = {"Ticker": [ticker], "Open": [open_price], "High": [high_price], "Low": [low_price], "Volume": [volume], "Month": [month], "Day": [date]}
     input = pd.DataFrame(data=data_input)
+    input = scaler.fit_transform(input)
+    price_true = scaler.fit_transform(present_price_array.reshape(-1, 1))
 
     #reshape về đúng dạng yêu cầu
-    input= input.values.reshape(input.shape[0],1,5)
-    output = model.predict(input)
+    input= input.reshape(input.shape[0],1,7)
 
+    #dự đoán giá cổ phiếu
+    output_scaled_predict = model.predict(input)
+    output = scaler.inverse_transform(output_scaled_predict)
+    chenh_lech_gia = output[0][0] - present_price
     #hiện kết quả
     st.text(f"Giá dự đoán của cổ phiếu {stock_symbol} sau {int(wanted_day)} ngày là {output[0][0]}")
-    st.text(f"Biến động giá cổ phiếu so với hiện tại là {output[0][0] - present_price}")
+    st.text(f"Biến động giá cổ phiếu so với hiện tại là {chenh_lech_gia}")
 
 if __name__ == '__main__':
 
