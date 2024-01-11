@@ -10,7 +10,7 @@ Predicting stock prices using AI has become a prevalent application in financial
 Technologies I used:
   - [Streamlit](https://streamlit.io/) to create a simple web demo.
   - [Tensorflow](https://www.tensorflow.org/) to build a deep learning model.
-  - [Sci-kit Learn] (https://scikit-learn.org/) to preprocess data for training model/
+  - [Sklearn] (https://scikit-learn.org/) to preprocess data for training model/
   - [Numpy](https://numpy.org) process data.
   - [Pandas](https://pandas.pydata.org/) read and handle data.
   - [Streamlit documentation](https://www.youtube.com/playlist?list=PLtqF5YXg7GLmCvTswG32NqQypOuYkPRUE) to learn the basic of streamlit.
@@ -40,10 +40,5 @@ MobileNet V2 is a lightweight and efficient convolutional neural network (CNN) a
 ---
 
 ### **DEMO**
-  - Link demo:
-  
-  ```
-    https://catdogclassification.streamlit.app/
-  ```
+[Demo](https://stock-predictionn.streamlit.app/) Click to try demo
 
-When the demo is starting, browse an image to classify.
