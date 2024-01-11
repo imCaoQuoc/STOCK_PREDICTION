@@ -14,4 +14,6 @@ if __name__ == '__main__':
     open_price = st.sidebar.number_input("Enter the price at the time of market opening")
     high_price = st.sidebar.number_input("Enter the high price of stock")
     low_price = st.sidebar.number_input("Enter the low price")
+    present_price = st.sidebar.number_input("Enter the present price")
+    volume = st.sidebar.number_input("Enter the volume at present")
 
