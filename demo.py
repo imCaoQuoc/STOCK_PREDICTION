@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import tensorflow
 import streamlit as st
+from sklearn.preprocessing import MinMaxScaler
 
 # Load pre-trained model
 model = tensorflow.keras.models.load_model("model_predict_stock.h5", compile=False)
