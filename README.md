@@ -36,6 +36,7 @@ There are 4 data files, each file represents a stock dataset for a company. Ther
 ### **LSTM**
 
 Long Short-Term Memory (LSTM) is a specialized recurrent neural network architecture designed for handling sequential data. It excels in capturing and retaining information over extended periods, making it ideal for tasks like natural language processing and time series analysis. With unique memory cells and gating mechanisms, LSTM effectively addresses the challenges of long-term dependencies, contributing to its widespread adoption in various applications within the realm of deep learning.
+
 ---
 
 ### **DEMO**
