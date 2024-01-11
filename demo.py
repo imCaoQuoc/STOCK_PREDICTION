@@ -70,10 +70,10 @@ def enter_other_infor():
 
 def enter_date():
     #ngày hiện tại
-    present_date = st.sidebar.date_input("Chọn ngày hiện tại", datetime(2018, 3, 7))
+    present_date = st.sidebar.date_input("Choose current date", datetime(2018, 3, 7))
 
     #ngày cần dự đoán
-    wanted_day = st.sidebar.number_input("Bạn muốn dự đoán cổ phiếu sau bao nhiêu ngày ?")
+    wanted_day = st.sidebar.number_input("Do you want to predict the stock after how many days?")
 
     #tính ngày cần dự đoán
     day = present_date + timedelta(days= int(wanted_day))
