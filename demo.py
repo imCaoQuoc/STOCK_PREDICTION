@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 import tensorflow
 import streamlit as st
 
@@ -28,4 +29,7 @@ if __name__ == '__main__':
     st.sidebar.markdown("---")
     present_price = st.sidebar.number_input("Enter the present price")
     volume = st.sidebar.number_input("Enter the volume at present")
+
+    data_input = {"Ticker": [ticker], "Open": [open_price], "High": [high_price], "Low": [low_price], "Volume": [volume]}
+    input = pd.DataFrame(data=data_input)
 
