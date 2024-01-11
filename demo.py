@@ -1,12 +1,12 @@
 import pandas as pd
 import numpy as np
-import tensorflow
+import tensorflow as tf
 import streamlit as st
 from sklearn.preprocessing import MinMaxScaler
 from datetime import datetime, timedelta
 
 # Load pre-trained model
-model = tensorflow.keras.models.load_model("model_predict_stock_1.h5", compile=False)
+model = tf.keras.models.load_model("model_predict_stock_1.h5", compile=False)
 
 def create_demo():
     #title của web
