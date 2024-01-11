@@ -35,10 +35,9 @@ There are 4 data files, each file represents a stock dataset for a company. Ther
 
 ### **LSTM**
 
-MobileNet V2 is a lightweight and efficient convolutional neural network (CNN) architecture designed for computer vision tasks. MobileNet V2 utilizes depthwise separable convolutions, making it ideal for applications on mobile devices and embedded systems. With its compact design and impressive performance, MobileNet V2 is a popular choice for tasks such as image classification, object detection, and semantic segmentation. This README provides an overview of using MobileNet V2 for the task of animal classification.
-
+Long Short-Term Memory (LSTM) is a specialized recurrent neural network architecture designed for handling sequential data. It excels in capturing and retaining information over extended periods, making it ideal for tasks like natural language processing and time series analysis. With unique memory cells and gating mechanisms, LSTM effectively addresses the challenges of long-term dependencies, contributing to its widespread adoption in various applications within the realm of deep learning.
 ---
 
 ### **DEMO**
-[Demo](https://stock-predictionn.streamlit.app/) Click to try demo
+[Click to try demo](https://stock-predictionn.streamlit.app/) 
 
