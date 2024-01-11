@@ -22,26 +22,26 @@ def enter_stock_symbol():
 
     #mã cổ phiếu
     stock_symbol = st.sidebar.text_input("Enter Stock Symbol")
+    if stock_symbol:
+        #nếu mã là FPT thì set ticker = 0 tương ứng FPT khi encode (coi file stock-prediction-finpros.ipynb)
+        if stock_symbol == "FPT" or stock_symbol =="fpt":
+            ticker = 0
 
-    #nếu mã là FPT thì set ticker = 0 tương ứng FPT khi encode (coi file stock-prediction-finpros.ipynb)
-    if stock_symbol == "FPT" or stock_symbol =="fpt":
-        ticker = 0
+        #nếu mã là MSN thì set ticker = 1 tương ứng MSN khi encode
+        elif stock_symbol == "MSN" or stock_symbol == "msn":
+            ticker = 1
 
-    #nếu mã là MSN thì set ticker = 1 tương ứng MSN khi encode
-    elif stock_symbol == "MSN" or stock_symbol == "msn":
-        ticker = 1
+        #nếu mã là PNJ thì set ticker = 2 tương ứng PNJ khi encode    
+        elif stock_symbol == "PNJ" or stock_symbol == "PNJ":
+            ticker = 2
 
-    #nếu mã là PNJ thì set ticker = 2 tương ứng PNJ khi encode    
-    elif stock_symbol == "PNJ" or stock_symbol == "PNJ":
-        ticker = 2
+        #nếu mã là VIN thì set ticker = 3 tương ứng VIC khi encode
+        elif stock_symbol == "VIC" or stock_symbol == "vic":
+            ticker = 3
 
-    #nếu mã là VIN thì set ticker = 3 tương ứng VIC khi encode
-    elif stock_symbol == "VIC" or stock_symbol == "vic":
-        ticker = 3
-
-    #nếu mã khác ngoài 4 mã trên, hiển thị là không có dữ liệu về mã cần dự đoán    
-    else:
-        st.text(f"Sorry, we don't have data about {stock_symbol}")
+        #nếu mã khác ngoài 4 mã trên, hiển thị là không có dữ liệu về mã cần dự đoán    
+        else:
+            st.text(f"Sorry, we don't have data about {stock_symbol}")
     st.sidebar.markdown("---")
     return stock_symbol, ticker
 
