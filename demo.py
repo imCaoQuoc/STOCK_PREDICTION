@@ -33,4 +33,11 @@ if __name__ == '__main__':
 
     data_input = {"Ticker": [ticker], "Open": [open_price], "High": [high_price], "Low": [low_price], "Volume": [volume]}
     input = pd.DataFrame(data=data_input)
+    scaler = MinMaxScaler()
+    input = scaler.fit_transform(input)
+    input_scaled = input.reshape(input.shape[0],1,5)
+    output = model.predict(input_scaled)
+    #output = scaler.inverse_transform(output_scaled.reshape(-1, 1))
+    st.text(f"Gía dự đoán của cổ phiếu {stock_symbol} trong tương lai là {output}")
+    st.text(f"Biến động giá cổ phiếu so với hiện tại là {output - present_price}")
 
