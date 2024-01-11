@@ -1,7 +1,7 @@
 import pandas as pd
 import tensorflow
 import streamlit as st
-from sklearn.preprocessing import MinMaxScaler
+from datetime import datetime, timedelta
 
 # Load pre-trained model
 model = tensorflow.keras.models.load_model("model_predict_stock.h5", compile=False)
@@ -29,17 +29,38 @@ if __name__ == '__main__':
     st.sidebar.markdown("---")
     present_price = st.sidebar.number_input("Enter the present price")
     volume = st.sidebar.number_input("Enter the volume at present")
-
+    date = st.date_input("Chọn ngày hiện tại", datetime(2019, 7, 6))
+    day = st.number_input("Bạn muốn dự đoán cổ phiếu sau bao nhiêu ngày ?")
     start = st.sidebar.button("PREDICT")
     if start: 
         data_input = {"Ticker": [ticker], "Open": [open_price], "High": [high_price], "Low": [low_price], "Volume": [volume]}
         input = pd.DataFrame(data=data_input)
-        scaler = MinMaxScaler()
-        input = scaler.fit_transform(input)
-        input_scaled = input.reshape(input.shape[0],1,5)
-        output = model.predict(input_scaled)
-        #output = scaler.inverse_transform(output_scaled.reshape(-1, 1))
-        st.text(f"Gía dự đoán của cổ phiếu {stock_symbol} trong tương lai là {output}")
-        st.text(f"Biến động giá cổ phiếu so với hiện tại là {output - present_price}")
+        input= input.values.reshape(input.shape[0],1,5)
+        output = model.predict(input)
+        st.text(f"Gía dự đoán của cổ phiếu {stock_symbol} trong tương lai là {output[0][0]}")
+        st.text(f"Biến động giá cổ phiếu so với hiện tại là {output[0][0] - present_price}")
+
+        st.markdown("---")
+        # Tách giá trị năm, tháng, ngày
+        nam = date.year
+        thang = date.month
+        ngay = date.day
+
+        # In kết quả
+        st.text(f"Năm: {nam}")
+        st.text(f"Tháng: {thang}")
+        st.text(f"Ngày: {ngay}")
+        st.markdown("---")
+        # Tính toán ngày 10 ngày sau
+        ngay_10_ngay_sau = date + timedelta(days= int(day))
+        nam2 = ngay_10_ngay_sau.year
+        thang2 = ngay_10_ngay_sau.month
+        ngay2 = ngay_10_ngay_sau.day
+
+        # In kết quả
+        st.text(f"Năm: {nam2}")
+        st.text(f"Tháng: {thang2}")
+        st.text(f"Ngày: {ngay2}")
+        
     
 
